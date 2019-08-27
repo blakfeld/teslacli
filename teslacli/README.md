@@ -7,6 +7,14 @@ Maybe never.
 
 ## Usage
 
+For best results run it as a python module:
+
+```
+
+$ python -m teslacli --help
+
+```
+
 ```
 
 Usage:
