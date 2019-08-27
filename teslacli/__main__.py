@@ -12,6 +12,7 @@ from __future__ import absolute_import, print_function
 
 import os
 import sys
+from getpass import getpass
 from pprint import pprint
 
 import yaml
@@ -45,10 +46,14 @@ def main():
     args = docopt(__doc__)
     config = read_config(args.get('--config-file'))
 
+    password = config.get('password', TESLA_PASSWORD)
+    if not password:
+        password = getpass()
+
     tesla = Tesla()
     tesla.login(
         username=config.get('username'),
-        password=config.get('password', TESLA_PASSWORD),
+        password=password,
         client_id=config.get('client_id', TESLA_CLIENT_ID),
         client_secret=config.get('client_secret', TESLA_CLIENT_SECRET)
     )
