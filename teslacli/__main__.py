@@ -31,7 +31,6 @@ TESLA_PASSWORD = os.environ.get('TESLA_PASSWORD')
 def read_config(config_file=None):
     if not config_file:
         for config_file_path in CONFIG_FILE_PATHS:
-            print(config_file_path)
             if os.path.isfile(config_file_path):
                 config_file = config_file_path 
                 break
