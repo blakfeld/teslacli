@@ -23,8 +23,6 @@ CONFIG_FILE_PATHS = [
     os.path.join(os.path.expanduser('~'), '.tesla.yml'),
     os.path.join(os.path.expanduser('~'), '.tesla.yaml')
 ]
-
-
 TESLA_CLIENT_ID = os.environ.get('TESLA_CLIENT_ID')
 TESLA_CLIENT_SECRET = os.environ.get('TESLA_CLIENT_SECRET')
 TESLA_PASSWORD = os.environ.get('TESLA_PASSWORD')
