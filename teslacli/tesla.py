@@ -36,22 +36,23 @@ class Tesla(object):
         return resp.json().get('response')
 
     def unlock_doors(self, vehicle_id):
-        url = self._get_url('/api/1/vehicles/{0}/command/door_unlock'.format(vehicle_id))
-        resp = requests.post(url, headers=self._get_headers())
-        resp.raise_for_status()
-
-        return resp.json().get('response')
+        return self._post('/api/1/vehicles/{0}/command/door_unlock'.format(vehicle_id))
 
     def lock_doors(self, vehicle_id):
-        url = self._get_url('/api/1/vehicles/{0}/command/door_lock'.format(vehicle_id))
-        resp = requests.post(url, headers=self._get_headers())
+        return self._post('/api/1/vehicles/{0}/command/door_lock'.format(vehicle_id))
+
+    def wake(self, vehicle_id):
+        return self._post('/api/1/vehicles/{0}/wake_up'.format(vehicle_id))
+
+    
+    def _get(self, uri):
+        resp = requests.get(self._get_url('/api/1/vehicles'), headers=self._get_headers())
         resp.raise_for_status()
 
         return resp.json().get('response')
 
-    def wake(self, vehicle_id):
-        url = self._get_url('/api/1/vehicles/{0}/wake_up'.format(vehicle_id))
-        resp = requests.post(url, headers=self._get_headers())
+    def _post(self, uri):
+        resp = requests.post(self._get_url(uri), headers=self._get_headers(), **kwargs)
         resp.raise_for_status()
 
         return resp.json().get('response')
