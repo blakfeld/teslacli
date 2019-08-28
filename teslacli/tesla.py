@@ -41,7 +41,6 @@ class Tesla(object):
     def wake(self, vehicle_id):
         return self._post('/api/1/vehicles/{0}/wake_up'.format(vehicle_id))
 
-    
     def _get(self, uri):
         resp = requests.get(self._get_url('/api/1/vehicles'), headers=self._get_headers())
         resp.raise_for_status()
