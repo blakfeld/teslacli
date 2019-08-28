@@ -30,10 +30,7 @@ class Tesla(object):
         return self._auth_token
 
     def fetch_vehicles(self):
-        resp = requests.get(self._get_url('/api/1/vehicles'), headers=self._get_headers())
-        resp.raise_for_status()
-
-        return resp.json().get('response')
+        return self._get('/api/1/vehicles')
 
     def unlock_doors(self, vehicle_id):
         return self._post('/api/1/vehicles/{0}/command/door_unlock'.format(vehicle_id))
